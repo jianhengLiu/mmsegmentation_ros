@@ -1,3 +1,12 @@
+
+
+<!--
+ * @Author: Jianheng Liu
+ * @Date: 2021-10-23 22:34:33
+ * @LastEditors: Jianheng Liu
+ * @LastEditTime: 2021-10-24 15:08:11
+ * @Description: Description
+-->
 # mmsegmentation-ros
 This is a ROS package for segmentation, which utilizes the toolbox [mmsegmentation](https://github.com/open-mmlab/mmsegmentation) of [OpenMMLab](https://openmmlab.com/).
 
@@ -11,7 +20,9 @@ This is a ROS package for segmentation, which utilizes the toolbox [mmsegmentati
 1. Clone packages
 
    ```bash
-   git clone https://github.com/jianhengLiu/mmsegmentation_ros.git --recursive
+   git clone https://github.com/jianhengLiu/mmsegmentation_ros.git 
+   cd mmdetection_ros
+   git clone https://github.com/open-mmlab/mmsegmentation.git
    ```
 
    
