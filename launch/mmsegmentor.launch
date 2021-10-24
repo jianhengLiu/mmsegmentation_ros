@@ -1,0 +1,20 @@
+<launch>
+	<arg name="image_topic" default="/camera/color/image_raw" />
+
+	<arg name="mmdet_pub_rate" default="50" />
+	<arg name="is_service" default="false" />
+	<arg name="visualization" default="true" />
+
+	<arg name="config_path" default="$(find mmsegmentation_ros)/mmsegmentation/configs/bisenetv1/bisenetv1_r18-d32_4x4_1024x1024_160k_cityscapes.py" />
+	<arg name="checkpoint_path" default="$(find mmsegmentation_ros)/mmsegmentation/checkpoints/bisenetv1_r18-d32_4x4_1024x1024_160k_cityscapes_20210922_172239-c55e78e2.pth" />
+
+	<node pkg= "mmsegmentation_ros" name="mmsegmentor" type="mmsegmentor.py" output="screen">
+		<remap from="~image_topic" to="$(arg image_topic)"/>
+		<param name="~publish_rate" value="$(arg mmdet_pub_rate)" />
+		<param name="~is_service" value="$(arg is_service)" />
+		<param name="~visualization" value="$(arg visualization)" />
+
+		<param name="~config_path" value="$(arg config_path)" />
+		<param name="~checkpoint_path" value="$(arg checkpoint_path)" />
+	</node>
+</launch>
