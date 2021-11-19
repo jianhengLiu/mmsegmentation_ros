@@ -1,5 +1,5 @@
 <launch>
-	<arg name="image_topic" default="/camera/color/image_raw" />
+	<arg name="image_topic" default="/kitti/camera_color_left/image_raw" />
 
 	<arg name="mmdet_pub_rate" default="50" />
 	<arg name="is_service" default="false" />

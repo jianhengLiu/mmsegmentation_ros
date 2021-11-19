@@ -4,14 +4,14 @@
 Author: Jianheng Liu
 Date: 2021-10-23 23:05:43
 LastEditors: Jianheng Liu
-LastEditTime: 2021-10-24 14:54:48
+LastEditTime: 2021-11-02 12:31:27
 Description: MMSegmentor
 '''
 
 # Check Pytorch installation
-from vision_msgs.msg import Detection2D, \
-    Detection2DArray, \
-    ObjectHypothesisWithPose
+# from vision_msgs.msg import Detection2D, \
+#     Detection2DArray, \
+#     ObjectHypothesisWithPose
 import threading
 from mmseg.models import build_segmentor
 from sensor_msgs.msg import Image
@@ -79,29 +79,29 @@ class Segmentor:
         self._msg_lock = threading.Lock()
 
         self.image_pub = rospy.Publisher("~debug_image", Image, queue_size=1)
-        self.object_pub = rospy.Publisher(
-            "~objects", Detection2DArray, queue_size=1)
+        # self.object_pub = rospy.Publisher(
+        #     "~objects", Detection2DArray, queue_size=1)
         # self.bridge = CvBridge()
         
         image_sub = rospy.Subscriber(
                 "~image_topic", Image, self._image_callback, queue_size=1)
 
-    def generate_obj(self, result, id, msg):
-        obj = Detection2D()
-        obj.header = msg.header
-        obj.source_img = msg
-        result = result[0]
-        obj.bbox.center.x = (result[0] + result[2]) / 2
-        obj.bbox.center.y = (result[1] + result[3]) / 2
-        obj.bbox.size_x = result[2] - result[0]
-        obj.bbox.size_y = result[3] - result[1]
+    # def generate_obj(self, result, id, msg):
+    #     obj = Detection2D()
+    #     obj.header = msg.header
+    #     obj.source_img = msg
+    #     result = result[0]
+    #     obj.bbox.center.x = (result[0] + result[2]) / 2
+    #     obj.bbox.center.y = (result[1] + result[3]) / 2
+    #     obj.bbox.size_x = result[2] - result[0]
+    #     obj.bbox.size_y = result[3] - result[1]
 
-        obj_hypothesis = ObjectHypothesisWithPose()
-        obj_hypothesis.id = str(id)
-        obj_hypothesis.score = result[4]
-        obj.results.append(obj_hypothesis)
+    #     obj_hypothesis = ObjectHypothesisWithPose()
+    #     obj_hypothesis.id = str(id)
+    #     obj_hypothesis.score = result[4]
+    #     obj.results.append(obj_hypothesis)
 
-        return obj
+    #     return obj
 
     def run(self):
         rate = rospy.Rate(self._publish_rate)
@@ -115,7 +115,7 @@ class Segmentor:
                 continue
 
             if msg is not None:
-                objArray = Detection2DArray()
+                # objArray = Detection2DArray()
                 # try:
                 #     cv_image = self.bridge.imgmsg_to_cv2(msg, "bgr8")
                 # except CvBridgeError as e:

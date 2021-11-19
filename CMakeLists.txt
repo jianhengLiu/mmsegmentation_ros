@@ -18,7 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
   genmsg
   # actionlib_msgs
   # set_nav_goal
-  vision_msgs
+  # vision_msgs
 )
 
 find_package(OpenCV REQUIRED 
@@ -73,7 +73,7 @@ find_package(OpenCV REQUIRED
 # )
 add_service_files(
   FILES
-    mmsegSrv.srv
+    # mmsegSrv.srv
 )
 
 ## Generate actions in the 'action' folder
@@ -90,7 +90,7 @@ add_service_files(
 # )
 generate_messages(
   DEPENDENCIES std_msgs sensor_msgs 
-  vision_msgs
+  # vision_msgs
 )
 
 ################################################
